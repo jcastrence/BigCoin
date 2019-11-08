@@ -1,2 +1,2 @@
 # BigCoin
-- A BitCoin inspired blockchain cryptocurrency (for educational purposes only)
+A BitCoin inspired blockchain cryptocurrency (for educational purposes only)
