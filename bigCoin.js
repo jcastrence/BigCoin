@@ -1,15 +1,19 @@
 const SHA256 = require('crypto-js/sha256');
 
-let doubleSHA256 = (x) => SHA256(SHA256(x).toString()).toString();
+// Double SHA256 prevents against length extension attacks by hashing twice.
+let SHA256d = (x) => SHA256(SHA256(x).toString()).toString();
+// Gets the current time and date and converts into datetime format.
 let getDateTime = () => {
     let today = new Date();
     return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
         + ` ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}.${today.getMilliseconds()}`;
 }
 
+// Constants used to generate the genesis block. This is the hash and timestamp of Bitcoin's genesis block.
 const GENESISHASH = '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f';
 const GENESISTIMESTAMP = '2009-1-3 13:15:05';
 
+// The ledger keeps track of all BigCoin transactions that have ever happened.
 class Ledger {
 
     constructor() {
@@ -50,6 +54,7 @@ class Ledger {
 
 }
 
+// Each Block object is composed of a header and a list of transactions.
 class Block {
     
     constructor(timestamp, transactions, difficulty, previousHash) {
@@ -70,7 +75,7 @@ class Block {
     }
 
     calculateHash() {
-        return (doubleSHA256(this.getHeader()));
+        return (SHA256d(this.getHeader()));
     }
 
     recalculateHash() {
@@ -80,6 +85,7 @@ class Block {
 
 }
 
+// Transaction class is used to document transactions.
 class Transaction {
     constructor(sendAddress, receiveAddress, amount) {
         this.sendAddress = sendAddress;
