@@ -33,12 +33,13 @@ class Ledger {
         return this.blockChain[this.blockChain.length - 1];
     }
 
-    addBlock(transactions) {
+    addBlock() {
         this.blockChain.push(
             this.mineBlock(
-                new Block(getDateTime(), transactions, this.difficulty, this.getLastBlock().getHash())
+                new Block(getDateTime(), this.pendingTransactions, this.difficulty, this.getLastBlock().getHash())
             )
         );
+        this.pendingTransactions = [];
     }
 
     mineBlock(unminedBlock) {
@@ -48,7 +49,7 @@ class Ledger {
         return unminedBlock;
     }
 
-    addPendingTransactions(pendingTransactions) {
+    addTransactions(pendingTransactions) {
         this.pendingTransactions.push(...pendingTransactions);
     }
 
@@ -95,3 +96,4 @@ class Transaction {
 }
 
 module.exports.Ledger = Ledger;
+module.exports.Transaction = Transaction;
