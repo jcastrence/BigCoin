@@ -33,13 +33,14 @@ class Ledger {
         return this.blockChain[this.blockChain.length - 1];
     }
 
-    addBlock() {
+    addBlock(minerAddress) {
         this.blockChain.push(
             this.mineBlock(
                 new Block(getDateTime(), this.pendingTransactions, this.difficulty, this.getLastBlock().getHash())
             )
         );
         this.pendingTransactions = [];
+        this.pendingTransactions.push(new Transaction('origin', minerAddress, this.reward));
     }
 
     mineBlock(unminedBlock) {
