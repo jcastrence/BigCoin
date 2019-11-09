@@ -6,11 +6,13 @@ const {SHA256d, getDateTime} = require('./utils');
 // This is the hash and timestamp of Bitcoin's genesis block
 const GENESIS_TIMESTAMP = '2009-1-3 13:15:05';
 const GENESIS_TRANSACTIONS = [];
-const GENESIS_REWARD = 0;
+const GENESIS_REWARD = 50;
 const GENESIS_DIFFICULTY = 0;
 const GENESIS_PREVIOUSHASH = 0;
 const GENESIS_NONCE = 0;
 const GENESIS_HASH = '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f';
+// Constant used to control the maximum amount of BigCoin that can be in circulation
+const TOTAL_COINBASE = 21000000;
 
 // The ledger keeps track of all BigCoin transactions that have ever happened
 class Ledger {
@@ -19,7 +21,6 @@ class Ledger {
         this.blockChain = [this.createGenesisBlock()];
         this.difficulty = 1;
         this.pendingTransactions = [];
-        this.coinbase = 21000000;
         this.currMiningReward = 50;
     }
 
@@ -57,8 +58,10 @@ class Ledger {
         );
         // Clear the list of pending transactions
         this.pendingTransactions = [];
-        // Reduce the amount of coins in the coinbase by the mining reward
-        this.coinbase -= this.currMiningReward;
+        // Check to see if the mining reward needs to be halfed
+        if ((this.blockChain.length) % (TOTAL_COINBASE / 100) == 0) {
+            this.currMiningReward /= 2;
+        }
     }
 
     mineBlockHelper(unminedBlock) {
