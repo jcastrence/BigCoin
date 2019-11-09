@@ -10,4 +10,5 @@ let getDateTime = () => {
         + ` ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}.${today.getMilliseconds()}`;
 }
 
-module.exports.utils = {SHA256d: SHA256d, getDateTime: getDateTime};
+module.exports.SHA256d = SHA256d;
+module.exports.getDateTime = getDateTime;

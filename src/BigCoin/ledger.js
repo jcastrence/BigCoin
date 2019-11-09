@@ -1,7 +1,6 @@
 const Block = require('./block.js').Block;
 const Transaction = require('./transaction.js').Transaction;
-const SHA256d = require('./utils').utils.SHA256d;
-const getDateTime = require('./utils').utils.getDateTime;
+const {SHA256d, getDateTime} = require('./utils');
 
 // Constants used to generate the genesis block
 // This is the hash and timestamp of Bitcoin's genesis block
