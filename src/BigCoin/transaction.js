@@ -16,7 +16,9 @@ class Transaction {
         return SHA256d(this.sendAddress + this.receiveAddress + this.amount + this.fromCoinbase);
     }
 
-    
+    signTransaction(keyPain) {
+        
+    }
 
 }
 
