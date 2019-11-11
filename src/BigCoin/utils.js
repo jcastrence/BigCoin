@@ -2,7 +2,7 @@ const SHA256 = require('crypto-js/sha256');
 // Utility functions that will be used by the Ledger class
 
 // Double SHA256 prevents against length extension attacks by hashing twice
-let SHA256d = (x) => SHA256(SHA256(x).toString()).toString();
+let SHA256d = (x) => SHA256(SHA256(x)).toString();
 // Gets the current time and date and converts into datetime format
 let getDateTime = () => {
     let today = new Date();
