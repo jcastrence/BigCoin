@@ -16,6 +16,3 @@ def sha256D(hexstring):
 def sha256ripemd160(hexstring):
     ripemd160.update(hexstringToByte(sha256(hexstringToByte(hexstring)).hexdigest()))
     return ripemd160.hexdigest()
-
-string = "80F7F58654AC15C47E3FB5B320192C9E658AF53DC001F915D4D0383FFEA4FA50A3"
-print(hexstringToByte(string))
