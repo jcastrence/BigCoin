@@ -33,3 +33,4 @@ console.log(`Alice: ${publicLedger.getBalance('Alice')}`);
 console.log(`Bob: ${publicLedger.getBalance('Bob')}`);
 console.log(`Charles: ${publicLedger.getBalance('Charles')}`);
 console.log(`Eve: ${publicLedger.getBalance('Eve')}`);
+

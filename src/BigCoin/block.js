@@ -1,4 +1,4 @@
-const SHA256d = require('./utils').SHA256d;
+const SHA256d = require('./util/utils').SHA256d;
 
 // Each Block object is composed of a header and a list of transactions
 class Block {

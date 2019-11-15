@@ -1,4 +1,4 @@
-const SHA256d = require('./utils').SHA256d;
+const SHA256d = require('./util/utils').SHA256d;
 const EllipticCurve = require('elliptic').ec;
 const EC = new EllipticCurve('secp256k1');
 // Transaction class is used to document transactions

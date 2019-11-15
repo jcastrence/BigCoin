@@ -34,7 +34,7 @@ class Key {
     }
 
     getPublicKeyY() {
-        return this.publicKey.substring(64, 130);
+        return this.publicKey.substring(64, 128);
     }
 
 }
