@@ -8,7 +8,7 @@ class Wallet {
         this.key = key;
         this.privateAddressU = this.convertPrivateAddressU();
         this.privateAddressC = this.convertPrivateAddressC();
-        
+
     }
 
     convertPrivateAddressU() {
@@ -23,6 +23,15 @@ class Wallet {
         const checksum = k => sha256D(k).substring(0, 8);
         const base58 = k => bs58.encode(Buffer.from(k, 'hex'));
         return base58(version(this.key.privateKey) + checksum(version(this.key.privateKey)));
+    }
+
+    convertPublicAddressU() {
+        const version = k => '04' + k;
+        const checksum = k => sha256D( '00' + sha256ripemd160(k)).substring(0, 8);
+    }
+
+    convertPublicAddressU() {
+
     }
 
 }
