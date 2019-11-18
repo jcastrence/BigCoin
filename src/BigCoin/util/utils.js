@@ -15,7 +15,7 @@ function sha256D(key) {
     return spawnSync('python3', ['get_hash.py'],
         {
             cwd: 'src/BigCoin/util',
-            input:JSON.stringify(['sha256D', key])
+            input: JSON.stringify(['sha256D', key])
         }
     ).stdout.toString().substring(0, 64);
 }
@@ -25,7 +25,7 @@ function sha256ripemd160(key) {
     return spawnSync('python3', ['get_hash.py'],
         {
             cwd: 'src/BigCoin/util',
-            input:JSON.stringify(['sha256ripemd160', key])
+            input: JSON.stringify(['sha256ripemd160', key])
         }
     ).stdout.toString().substring(0, 40);
 }

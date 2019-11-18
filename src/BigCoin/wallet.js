@@ -1,14 +1,32 @@
 const { sha256D, sha256ripemd160 } = require('./util/utils');
 const bs58 = require('bs58');
+const { Key } = require('./key.js');
 
 class Wallet {
 
-    constructor(key) {
-        this.key = key;
+    constructor(options) {
+        this.key = options === undefined ? new Key() : this.getKey(options);
         this.privateAddressU = this.convertPrivateAddressU();
         this.privateAddressC = this.convertPrivateAddressC();
         this.publicAddressU = this.convertPublicAddressU();
         this.publicAddressC = this.convertPublicAddressC();
+    }
+
+    getKey(options) {
+        if (options.key !== undefined)
+            return options.key;
+        else if (options.privateKey !== undefined)
+            return new Key(options.privateKey);
+        else if (options.privateAddress !== undefined)
+            return new Key(this.convertPrivateKey(options.privateAddress));
+        else
+            throw "Invalid option";   
+    }
+
+    convertPrivateKey(address) {
+        let hex = bs58.decode(address).toString('hex');
+        let version = hex.substring(0, hex.length - 8);
+        return version.substring(2, 66)
     }
 
     checksum(k) {
