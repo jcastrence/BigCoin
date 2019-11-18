@@ -1,0 +1,27 @@
+{
+  "name": "bigcoin",
+  "version": "1.0.0",
+  "description": "A BitCoin inspired blockchain cryptocurrency (for educational purposes only)",
+  "main": "main.js",
+  "dependencies": {
+    "bs58": "^4.0.1",
+    "crypto-js": "^3.1.9-1",
+    "elliptic": "^6.5.1",
+    "random-js": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcastrence/BigCoin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcastrence/BigCoin/issues"
+  },
+  "homepage": "https://github.com/jcastrence/BigCoin#readme"
+}

@@ -1,4 +1,5 @@
 const Ledger = require('./bigCoin/ledger.js').Ledger;
+const { spawnSync, exec } = require('child_process');
 
 const publicLedger = new Ledger();
 // MikeMiner mines the first block, and is rewarded 50 BigCoins
@@ -33,4 +34,3 @@ console.log(`Alice: ${publicLedger.getBalance('Alice')}`);
 console.log(`Bob: ${publicLedger.getBalance('Bob')}`);
 console.log(`Charles: ${publicLedger.getBalance('Charles')}`);
 console.log(`Eve: ${publicLedger.getBalance('Eve')}`);
-

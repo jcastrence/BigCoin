@@ -17,16 +17,17 @@ function sha256D(key) {
             cwd: 'src/BigCoin/util',
             input:JSON.stringify(['sha256D', key])
         }
-    ).stdout.toString();
+    ).stdout.toString().substring(0, 64);
 }
 
 function sha256ripemd160(key) {
+    
     return spawnSync('python3', ['get_hash.py'],
         {
             cwd: 'src/BigCoin/util',
             input:JSON.stringify(['sha256ripemd160', key])
         }
-    ).stdout.toString();
+    ).stdout.toString().substring(0, 40);
 }
 
 module.exports.SHA256d = SHA256d;
